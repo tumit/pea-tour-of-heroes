@@ -24,6 +24,7 @@ export class HeroesComponent implements OnInit {
   }
 
   onSelectHero(hero: Hero) {
+    console.log('hero', hero)
     this.heroFormGroup.setValue(hero);
   }
 
