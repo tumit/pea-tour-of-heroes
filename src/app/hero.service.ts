@@ -48,4 +48,10 @@ export class HeroService {
     return this.httpClient
       .delete<void>(this.baseUrl + '/' + id);
   }
+
+  searchHero(term: string): Observable<Hero[]> {
+    return this.httpClient
+      .get<Hero[]>(this.baseUrl + '?q=' + term)
+  }
+
 }

@@ -14,9 +14,7 @@
   <li
     class="list-group-item list-group-item-action"
     *ngFor="let hero of heroes">
-
     <div class="d-flex justify-content-between">
-
       <a class="text-decoration-none" routerLink="/hero-form/{{ hero.id }}">
         <span class="badge">{{ hero.id }}</span>
         {{ hero.name }}
@@ -27,8 +25,6 @@
         <i class="bi bi-trash"></i>
       </a>
     </div>
-
-
   </li>
 </ul>
 
