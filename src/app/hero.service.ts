@@ -17,7 +17,14 @@ export class HeroService {
 
   // void => Observable<Hero[]>
   getHeroes(): Observable<Hero[]> {
-    // return of(HEROES).pipe(delay(500));
-    return throwError(() => ({ status: 404, message: 'Not found' }));
+    return of(HEROES).pipe(delay(500));
+    // return throwError(() => ({ status: 404, message: 'Not found' }));
   }
+
+  // id: number => hero: Observable<Hero>
+  getHero(id: number): Observable<Hero> {
+    const hero = HEROES.find(hero => hero.id === id)!;
+    return of(hero);
+  }
+
 }
