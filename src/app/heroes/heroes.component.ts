@@ -28,4 +28,13 @@ export class HeroesComponent implements OnInit {
         error: err => this.message = err.message
       });
   }
+
+  onDeleteHero(id: number) {
+    this.heroService
+      .deleteHero(id)
+      .subscribe(
+        () => this.heroes = this.heroes.filter(hero => hero.id !== id)
+      );
+  }
+
 }
