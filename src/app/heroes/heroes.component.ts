@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -15,12 +15,23 @@ export class HeroesComponent implements OnInit {
     name: new FormControl()
   })
 
-  heroes = HEROES;
+  heroes: Hero[] = [];
 
-  constructor() { }
+  message = '';
+
+  constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    // this.heroFormGroup.setValue(this.hero);
+    // this.heroes = this.heroService.getHeroes();
+
+    // subscribe (next: fn)
+    // subscribe ({next: fn, error: fn, complete: fn})
+
+    this.heroService.getHeroes()
+      .subscribe({
+        next: hs => this.heroes = hs,
+        error: err => this.message = err.message
+      });
   }
 
   onSelectHero(hero: Hero) {
